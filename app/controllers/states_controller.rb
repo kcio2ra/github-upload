@@ -1,5 +1,5 @@
 class StatesController < ApplicationController
-  before_action :set_state, only: [:show, :update, :destroy]
+  before_action :set_state, only: [:show, :update, :destroy, :has_cities]
 
   # GET /states
   def index
@@ -44,7 +44,12 @@ class StatesController < ApplicationController
 
    @states = State.where(country_id: params[:country_id])
 
-   render json: @states
+    render json: @states
+  end
+
+      # GET states/country/:country_id
+  def has_cities
+       render json: @state.cities 
   end
 
   private

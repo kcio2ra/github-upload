@@ -1,5 +1,5 @@
 class CountriesController < ApplicationController
-  before_action :set_country, only: [:show, :update, :destroy]
+  before_action :set_country, only: [:show, :update, :destroy, :has_states_cities]
 
   # GET /countries
   def index
@@ -36,6 +36,13 @@ class CountriesController < ApplicationController
   # DELETE /countries/1
   def destroy
     @country.destroy
+  end
+
+
+  def has_states_cities
+
+   render :json => {:states => @country.states, :cities => @country.cities }
+
   end
 
   private
