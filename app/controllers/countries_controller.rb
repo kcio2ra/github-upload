@@ -41,8 +41,12 @@ class CountriesController < ApplicationController
 
   def has_states_cities
 
-   render :json => {:states => @country.states, :cities => @country.cities }
-
+   #render :json => {:states => @country.states, :cities => @country.cities }
+   # render json: @country.to_json(include: [:states, :cities])
+  #options = {include: [:states, :cities]}
+  #render json: CountrySerializer.new(@country, options)
+   #render json: @country
+   render json: @country, include: ['states', 'cities']
   end
 
   private
